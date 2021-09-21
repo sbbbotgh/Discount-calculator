@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,body {
+            height: 100%;
+            margin: 0;
+            color: black;
+        }
+        body{
+            background-image: url(full-moon-forest-night-dark-starry-sky-5k-8k-3840x2160-1684.jpeg);
+            background-position:center;
+        }
+        h3{
+            font-family: 'Yeon Sung';
+            font-size: 45px;
+            letter-spacing: 10px;
+            margin-top: 80px;
+        }
+        .pop-corns{
+            background-color: rgba(51, 51, 51, 0.8);
+            border-radius: 12px;
+            width: 500px;
+            height: 260px;
+            padding-top: 20px;
+        }
+        #h3 img{
+            width: 80px;
+            margin-left: -15px;
+        }
+        #logo{
+            width: 80px;
+            margin-top: 10px;
+            border-radius: 40px;
+            border-style: solid;
+            border-width: 3px;
+            border-color: black;
+            margin-bottom: 20px;
+            padding: 8px;
+        }
+        #price_here{
+            width: 60%;
+            display: inline-block;
+        }
+        button{
+            margin-top: -5px;
+            margin-left: 5px;
+        }
+        #hide{
+            visibility: hidden;
+            height: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+    <center>
+
+        <h3 id="up" class="text-capitalise">discount calculator
+            <sup><img src="https://img.icons8.com/office/60/000000/discount.png"/></sup>
+        </h3>
+
+        <div id="un-hide" class="pop-corns">
+            <img id="logo" src="https://img.icons8.com/ios-glyphs/90/000000/user--v1.png"/>
+            <h5>Please enter the price of your item:</h5>
+            <div>
+            <input type="number" id="price_here" class="form-control" placeholder="Please enter the price of your item"/>
+                <button type="submit" class="btn btn-warning" onclick="calculate()"><i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="hide" class="pop-corns">
+            <img id="logo" src="https://img.icons8.com/ios-glyphs/90/000000/user--v1.png"/>
+            <h6 id="then"></h6>
+                <button type="submit" class="btn btn-warning" onclick="back()" style="margin-top: 5px;"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;back</button>
+        </div>
+
+    </center>
+    
+</div>
+
+<script>
+    var price = 0;
+    var discount = 0;
+    var payableprice = 0;
+    function calculate(){
+        price = document.getElementById("price_here").value;
+        document.getElementById("price_here").value = "";
+        document.getElementById("un-hide").style.height = "0px";
+        document.getElementById("un-hide").style.visibility = "hidden";
+        document.getElementById("hide").style.height = "260px";
+        document.getElementById("hide").style.visibility = "visible";
+                if(price>=40){
+            discount = 0.2*price;
+            payableprice = price - discount;
+            document.getElementById("then").innerHTML = "Your subtotal is: $"+price+"Your payable amount is now $"+payableprice+" you get discount of $"+discount;
+            console.log("40");
+        }
+        else if(price>20 && price<40){
+            discount = 0.15*price;
+            payableprice = price - discount;
+            document.getElementById("then").innerHTML = "Your subtotal is: $"+price+"Your payable amount is now $"+payableprice+" you get discount of $"+discount;
+            console.log("20");
+        }
+        else if(price>10 && price<20){
+            discount = 0.1*price;
+            payableprice = price - discount;
+            document.getElementById("then").innerHTML = "Your subtotal is: $"+price+"Your payable amount is now $"+payableprice+" you get discount of $"+discount;
+            console.log("10");
+        }
+        else{
+            document.getElementById("then").innerHTML = "Please pay for your item.";
+            console.log("0");
+        }
+    }
+    function back(){
+        document.getElementById("hide").style.height = "0px";
+        document.getElementById("hide").style.visibility = "hidden";
+        document.getElementById("un-hide").style.height = "260px";
+        document.getElementById("un-hide").style.visibility = "visible";
+    }
+</script>
+
+</body>
+</html>
